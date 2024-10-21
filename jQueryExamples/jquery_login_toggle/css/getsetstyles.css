@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+#button-container {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  text-align: center;
+}
+.btn {
+  flex: 1;
+  font-size: 1rem;
+  font-family: Verdana;
+  margin: 5rem 0.3rem 0 0;
+  padding: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+#button-container .btn:hover {
+  background-color: rgb(163, 172, 66);
+}
+
+#btn1 {
+  background-color: rgb(75, 122, 192);
+}
+#btn2 {
+  background-color: rgb(124, 158, 207);
+}
+#btn3 {
+  background-color: rgb(41, 87, 156);
+}
+#btn4 {
+  background-color: rgb(34, 101, 201);
+}
+#btn5 {
+  background-color: rgb(53, 129, 243);
+}
+#btn6 {
+  background-color: rgb(96, 149, 230);
+}
+
+#tag-container,
+#output-container {
+  width: 30%;
+  margin: 5rem auto;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgb(96, 149, 230);
+}
+
+#output-container {
+  background-color: rgb(113, 139, 179);
+}
+.format {
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: Verdana;
+  color: #fff;
+}
+input {
+  width: 150px;
+  padding: 0.7rem;
+  margin: 0.5rem auto;
+  border-radius: 5px;
+  border: none;
+}
+label {
+  font-size: 1.5rem;
+  font-family: Verdana;
+  color: rgb(196, 236, 158);
+}
+h2 {
+  color: rgb(236, 224, 53);
+  font-size: 1.3rem;
+  font-family: Verdana;
+}
+
+.demo {
+  background-color: rgb(228, 70, 157);
+}

@@ -1,0 +1,84 @@
+/*<<<<< Wrapper for centring the content and controlling the max width >>>>>*/
+.wrapper {
+  width: 100%;  /* Full width */
+  max-width: 1200px;  /* Maximum width of 1200px */
+  margin: 0 auto;  /* Centres the content horizontally */
+  border: 1px solid #2c72e3;  /* Blue border around the wrapper */
+}
+
+/*<<<<< General rules for flex items such as header, content, and footer sections >>>>>*/
+.header-topleft,
+.header-middle,
+.header-topright,
+.maincontent-midleft,
+.maincontent-middle,
+.maincontent-midright,
+.footer-btmleft,
+.footer-btmright {
+  background-color: #39b1f0;  /* Light blue background for all sections */
+  color: #ffffff;  /* White text */
+  text-align: center;  /* Centres the text */
+  font-family: "Tahoma";  /* Font set to Tahoma */
+  font-size: 2rem;  /* Text size set to 2 rem units */
+  border: 2px solid #ade8f0;  /* Light blue border around each section */
+}
+
+/*<<<<< Flexbox container for header, main content, and footer >>>>>*/
+#header-container, #maincontent-container, #footer-container {
+  display: flex;  /* Sets the container as a flex container */
+}
+
+/*<<<<< Individual flex items for header, main content, and footer >>>>>*/
+.header-topleft { background-color: #1e85dd; flex: 1; }
+.header-middle { background-color: #54a5ea; flex: 1; }
+.header-topright { background-color: #2c7fc6; flex: 1; }
+.maincontent-midleft { background-color: #399f97; flex: 1; }
+.maincontent-middle { background-color: #4c67af; flex: 1; }
+.maincontent-midright { background-color: #8c7bec; flex: 1; }
+.footer-btmleft { background-color: #6647aa; flex: 1; }
+.footer-btmright { background-color: #63a054; flex: 1; }
+
+/*<<<<< Ensures images fill the width of their containers >>>>>*/
+img { width: 100%; }
+
+/*<<<<< Styling for the buttons used to control the content >>>>>*/
+.btnon-bulb, .btnfadeoutghost, .btnslideout {
+  background-color: #63a054;  /* Green background for buttons */
+  padding: 1rem;  /* Padding inside the button */
+  margin-right: 0.5rem;  /* Small space between buttons */
+  cursor: pointer;  /* Pointer cursor on hover */
+}
+.btnoff-bulb, .btnfadeinghost, .btnslidein {
+  background-color: #dd642b;  /* Orange background for buttons */
+  padding: 1rem;  /* Padding inside the button */
+  cursor: pointer;  /* Pointer cursor */
+}
+
+/*<<<<< Centres the button containers inside the flex items >>>>>*/
+#right-btn-container, #mid-btn-container, #left-btn-container {
+  display: flex;
+  justify-content: center;  /* Centres the buttons horizontally */
+}
+
+/*<<<<< Styling for the toggle buttons >>>>>*/
+.toggle-btn, .toggle-btn-fly {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.toggle-btn { background-color: #bbb342; }  /* Light yellow background */
+.toggle-btn-fly { background-color: #8cb988; }  /* Greenish background */
+
+/*<<<<< Styling for the squarechange and change-styles button >>>>>*/
+span.squarechange {
+  display: inline-block;  /* Allows setting width/height */
+  margin: 1em;
+  background-color: #58b4a4;  /* Teal background */
+}
+
+.change-styles-btn {
+  background-color: #496d96;  /* Dark blue background */
+  padding: 1rem;
+  margin: 2em;
+  cursor: pointer;
+}

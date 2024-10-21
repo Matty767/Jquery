@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index Menu Colour</title>
+    
+    <!-- Preconnecting to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Linking Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    
+    <!-- Linking external CSS -->
+    <link rel="stylesheet" href="css/menustyles.css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <h2>The Panel</h2>
+      <p class="name-display">Name displays here...</p>
+
+      <!-- Image holder for dynamic images -->
+      <div id="image-holder">
+        <img src="" alt="Selected image" /> <!-- Added alt attribute for accessibility -->
+      </div>
+
+      <!-- Text container with descriptions -->
+      <div id="text-container">
+        <p class="p-items" id="menu1txt">Change the panel colour</p>
+        <p class="p-items" id="menu2txt">Select an image</p>
+        <p class="p-items" id="menu3txt">Insert the user's name and display</p>
+      </div>
+
+      <!-- Menu container with dropdowns and input -->
+      <div id="menu-container">
+        
+        <!-- Dropdown for selecting a colour -->
+        <div class="items" id="menu1">
+          <form action="#">
+            <label for="colours">Choose a colour:</label>
+            <select name="colours" id="colours">
+              <option value=""></option> <!-- Empty option for default -->
+              <option value="#6B3786">Eminence</option>
+              <option value="#9BBD3C">Apple Green</option>
+              <option value="#D93996">Mulberry</option>
+              <option value="#39B1D9">Aero</option>
+            </select>
+          </form>
+        </div>
+
+        <!-- Dropdown for selecting an image -->
+        <div class="items" id="menu2">
+          <form action="#">
+            <label for="images">Choose an image:</label>
+            <select name="images" id="images">
+              <option value=""></option> <!-- Empty option for default -->
+              <option value="meadow.jpg">Meadow</option>
+              <option value="whiteroom.jpg">Whiteroom</option>
+              <option value="coffee.jpg">Coffee</option>
+              <option value="ronaldo.png">Ronaldo</option>
+            </select>
+          </form>
+        </div>
+
+        <!-- Input for submitting user name -->
+        <div class="items sbmt-align" id="menu3">
+          <input type="text" id="sbmt-name" placeholder="Enter your name" />
+          <button type="button">Submit</button> <!-- Changed button type to 'button' to prevent form submission -->
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Script tag linking to external JavaScript file -->
+    <script src="js/script.js"></script> <!-- Fixed unclosed script tag -->
+  </body>
+</html>

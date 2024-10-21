@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index Values</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <!-- Navigation section with log in and subscribe buttons -->
+    <div id="nav">
+      <div class="signin" id="login">Log in</div>
+      <div class="subscribe" id="subscribe">Subscribe</div>
+    </div>
+
+    <!-- Dropdown container for log in -->
+    <div id="drop-container">
+      <div id="dropdown">
+        <div class="form-box">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter your username" />
+        </div>
+
+        <div class="form-box">
+          <label for="pwd">Password</label>
+          <input type="password" id="pwd" placeholder="Enter your password" required />
+        </div>
+
+        <div class="form-box">
+          <button id="btn">Log in</button> <!-- Updated button ID to match the jQuery code -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Section for displaying login and password messages -->
+    <div id="display-section">
+      <div id="login-msg-html">Get & Set Values</div>
+      <div id="login-msg-text">Get & Set Values</div>
+    </div>
+
+      <!-- Linking the external JavaScript file -->
+      <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,800;1,100;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>GET ELEMENT TASKS</title>
+
+</head>
+
+<body>
+    <div id="container">
+        <h2>This is a Header</h2>
+        <p id="pagetitle">This is a basic html page</p>
+        <ul class="ulist">
+            <li class="list" "active">JavaScript</li>
+            <li>HTML5</li>
+            <li class="list">CSS</li>
+            <li>JQuery</li>
+        </ul>
+        <p>Content can go here.... </p>
+        <p class="ptag"></p>
+    </div>
+    
+    <div id="wrapform">
+        
+        <form action="">
+            <label for="miles">Enter in Miles:</label>
+            <input type="text" name="miles" id="miles">
+            <br><span id="result">0 Km</span><br>
+            <button type="button" id="btn">Convert Miles to Kilometres</button>
+        </form>
+    </div>
+
+    <script>
+        // 1. Target the <div> with an ID of "container" and change its background colour and text colour
+        const container = document.getElementById("container");
+        container.style.backgroundColor = "lightblue"; // Background colour to light blue
+        container.style.color = "green"; // Text colour to green
+
+        // 2. Target the <h2> element and change its text content to "Welcome to JavaScript"
+        const h2Tag = document.querySelector("h2"); 
+        h2Tag.textContent = "Welcome to JavaScript"; // Update the content of <h2>
+
+        // 3. Target the <p> tag with ID "pagetitle" and change its inner content
+        const pagetitle = document.getElementById("pagetitle");
+        pagetitle.innerHTML = "This page has been changed by JavaScript"; // Update the content of the <p>
+
+        // 4. Target the elements with class name 'list' and change their styles (padding, background colour, etc.)
+        const listItems = document.getElementsByClassName("list"); // Get all elements with class 'list'
+        for (let i = 0; i < listItems.length; i++) {
+            listItems[i].style.padding = "10px"; // Add padding
+            listItems[i].style.backgroundColor = "lightgray"; // Set background colour
+            listItems[i].style.color = "blue"; // Set text colour
+            listItems[i].style.fontSize = "18px"; // Change font size
+            listItems[i].style.fontWeight = "bold"; // Make text bold
+            listItems[i].style.fontFamily = "'Poppins', sans-serif"; // Change the font family
+        }
+
+        // 5. Target all <li> elements and change their background colours using querySelectorAll
+        const allLi = document.querySelectorAll("li"); // Select all <li> elements
+        allLi.forEach(li => {
+            li.style.backgroundColor = "purple"; // Set background to purple
+            li.style.color = "white"; // Set text colour to white
+        });
+
+        // 6. Function to convert miles to kilometres
+        function convertMilesToKm() {
+            const milesInput = document.getElementById("miles").value; // Get the value from the input box
+            const miles = Number(milesInput); // Convert input value to a number
+            const kilometers = miles * 1.60934; // Conversion: 1 mile = 1.60934 kilometres
+            document.getElementById("result").innerText = kilometers.toFixed(2) + " Km"; // Display the result in the <span>
+        }
+
+        // Add an event listener to the button to trigger the conversion function when clicked
+        document.getElementById("btn").addEventListener("click", convertMilesToKm);
+
+    </script>
+</body>
+
+</html>

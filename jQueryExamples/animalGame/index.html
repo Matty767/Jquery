@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spaceship Word Shooter</title>
+    <style>
+        /* Style the canvas where the game will be played */
+        canvas {
+            background-color: black;
+            display: block;
+            margin: 0 auto;
+            border: 2px solid #fff;
+            width: 100%; /* Make it responsive */
+            max-width: 800px; /* Maximum width for larger screens */
+            height: auto;
+        }
+
+        /* Scoreboard styling */
+        #score {
+            text-align: center;
+            font-size: 24px;
+            color: white;
+            background-color: #28a745;
+            padding: 10px;
+            border-radius: 10px;
+            width: 200px;
+            margin: 10px auto;
+            border: 2px solid #fff;
+        }
+
+        /* Instructions styling */
+        #instructions {
+            text-align: center;
+            font-size: 24px;
+            color: yellow;
+            margin: 10px 0;
+        }
+
+        /* Message styling for pop-up messages */
+        #message {
+            text-align: center;
+            font-size: 36px;
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: fadein 2s;
+        }
+
+        @keyframes fadein {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* Controls for buttons */
+        #controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Instructions at the top -->
+<div id="instructions">Press SPACE or tap the screen to fire bullets. Move the ship with your mouse or touch.</div>
+
+<!-- Canvas for the game -->
+<canvas id="gameCanvas" width="600" height="800"></canvas>
+
+<!-- Scoreboard and lives -->
+<div id="score">Score: 0 | Lives: 6</div>
+
+<!-- Message area for animated pop-ups -->
+<div id="message"></div>
+
+<!-- Game control buttons -->
+<div id="controls">
+    <button class="button" id="startButton">Start</button>
+    <button class="button" id="stopButton">Stop</button>
+    <button class="button" id="resetButton">Reset</button>
+</div>
+
+<script>
+// Set up canvas and context
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+// Game variables
+let spaceship = { x: canvas.width / 2 - 20, y: canvas.height - 60, width: 40, height: 40 };
+let bullets = [];
+let words = [];
+let score = 0;
+let lives = 6;
+let gameRunning = false;
+
+// Touch/mouse controls for spaceship movement
+canvas.addEventListener('mousemove', function (event) {
+    let rect = canvas.getBoundingClientRect();
+    spaceship.x = event.clientX - rect.left - spaceship.width / 2;
+});
+
+canvas.addEventListener('touchmove', function (event) {
+    let touch = event.touches[0];
+    let rect = canvas.getBoundingClientRect();
+    spaceship.x = touch.clientX - rect.left - spaceship.width / 2;
+});
+
+// Function to fire bullets
+function fireBullet() {
+    bullets.push({ x: spaceship.x + spaceship.width / 2 - 2, y: spaceship.y, width: 4, height: 10 });
+}
+
+// Handle spacebar firing
+document.addEventListener('keydown', function (event) {
+    if (event.code === 'Space' && gameRunning) {
+        fireBullet();
+    }
+});
+
+// Function to create floating words
+function createWord() {
+    let word = {
+        text: getRandomWord(),
+        x: Math.random() * (canvas.width - 50),
+        y: -50,
+        width: 50,
+        height: 30
+    };
+    words.push(word);
+}
+
+// Random words generator
+function getRandomWord() {
+    let wordsArray = ["HTML", "CSS", "JavaScript", "React", "NodeJS"];
+    return wordsArray[Math.floor(Math.random() * wordsArray.length)];
+}
+
+// Function to draw the spaceship as a triangle
+function drawSpaceship() {
+    ctx.beginPath();
+    ctx.moveTo(spaceship.x, spaceship.y);
+    ctx.lineTo(spaceship.x + spaceship.width / 2, spaceship.y - spaceship.height);
+    ctx.lineTo(spaceship.x + spaceship.width, spaceship.y);
+    ctx.closePath();
+    ctx.fillStyle = "white";
+    ctx.fill();
+}
+
+// Function to display pop-up messages
+function displayMessage(message) {
+    let messageBox = document.getElementById('message');
+    messageBox.textContent = message;
+    messageBox.style.animation = "fadein 1s"; // Animate message
+}
+
+// Game loop
+function gameLoop() {
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw spaceship
+    drawSpaceship();
+
+    // Update bullets
+    bullets = bullets.filter(bullet => bullet.y > 0);
+    bullets.forEach(bullet => {
+        bullet.y -= 5;
+        ctx.fillStyle = "white";
+        ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+    });
+
+    // Update floating words
+    words = words.filter(word => word.y < canvas.height);
+    words.forEach(word => {
+        word.y += 2; // Move words down
+        ctx.font = "24px Arial";
+        ctx.fillStyle = "yellow";
+        ctx.fillText(word.text, word.x, word.y);
+    });
+
+    // Check for collisions between bullets and words
+    bullets.forEach((bullet, bulletIndex) => {
+        words.forEach((word, wordIndex) => {
+            if (bullet.x < word.x + word.width && bullet.x + bullet.width > word.x &&
+                bullet.y < word.y + word.height && bullet.y + bullet.height > word.y) {
+                // Collision detected, remove bullet and word, increase score
+                bullets.splice(bulletIndex, 1);
+                words.splice(wordIndex, 1);
+                score++;
+                document.getElementById('score').textContent = `Score: ${score} | Lives: ${lives}`;
+
+                // Show special messages for specific scores
+                if (score === 5) displayMessage("Writing!");
+                if (score === 10) displayMessage("Wow!");
+                if (score === 15) displayMessage("Right on!");
+            }
+        });
+    });
+
+    // Check if words hit the spaceship
+    words.forEach((word, wordIndex) => {
+        if (word.y + word.height >= spaceship.y && word.x < spaceship.x + spaceship.width && word.x + word.width > spaceship.x) {
+            // Word hit the spaceship
+            words.splice(wordIndex, 1); // Remove the word
+            lives--;
+            document.getElementById('score').textContent = `Score: ${score} | Lives: ${lives}`;
+
+            if (lives === 0) {
+                gameRunning = false;
+                displayMessage("Game Over! Would you like to play again?");
+            }
+        }
+    });
+
+    // Add new words randomly
+    if (Math.random() < 0.01 && gameRunning) {
+        createWord();
+    }
+
+    if (gameRunning && lives > 0) {
+        requestAnimationFrame(gameLoop);
+    }
+}
+
+// Start game when the start button is clicked
+document.getElementById('startButton').addEventListener('click', function () {
+    if (!gameRunning) {
+        gameRunning = true;
+        gameLoop();
+    }
+});
+
+// Stop game when the stop button is clicked
+document.getElementById('stopButton').addEventListener('click', function () {
+    gameRunning = false;
+});
+
+// Reset game when the reset button is clicked
+document.getElementById('resetButton').addEventListener('click', function () {
+    score = 0;
+    lives = 6;
+    bullets = [];
+    words = [];
+    document.getElementById('score').textContent = `Score: 0 | Lives: 6`;
+    document.getElementById('message').textContent = "";
+    gameRunning = true;
+    gameLoop();
+});
+
+// Add touch control for firing bullets
+canvas.addEventListener('touchstart', function () {
+    if (gameRunning) {
+        fireBullet();
+    }
+});
+
+</script>
+
+</body>
+</html>

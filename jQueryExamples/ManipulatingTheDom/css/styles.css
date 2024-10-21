@@ -1,0 +1,46 @@
+body {
+
+    font-family: 'poppins';
+}
+
+
+#container,
+#wrapform {
+    width: 50%;
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    align-items: center;
+    border: 1px solid rgb(154, 194, 162);
+
+}
+
+#miles {
+    margin-left: .5rem;
+    padding: 1rem;
+    width: 100px;
+    font-size: 1.2rem;
+}
+#btn {
+    width: 300px;
+    padding: 1rem;
+    font-family: 'poppins';
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    background-color: #557ba5;
+    color: #ffffff;
+    border: 0;
+    cursor: pointer;
+}
+
+#btn:hover{
+    background-color: #f0cc8c;
+    color: #000;
+}
+
+#result {
+    font-size: 1.6rem;
+    font-weight: 400; 
+}

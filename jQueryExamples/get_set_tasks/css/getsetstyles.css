@@ -1,0 +1,117 @@
+/* Apply box-sizing, margin, and padding resets to all elements */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for buttons, centre it and arrange in a row */
+#button-container {
+  width: 75%;
+  margin: 0 auto; /* Centres the container */
+  display: flex;
+  text-align: center; /* Centres text inside buttons */
+}
+
+/* General styling for all buttons */
+.btn {
+  flex: 1; /* Ensures buttons take equal width */
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif; /* Ensure correct font family */
+  margin: 5rem 0.3rem 0 0;
+  padding: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Specific styling for the reload button (Separator button) */
+.btn.separator {
+  background-color: yellow; /* Override for this button */
+}
+
+/* Hover effect for all buttons */
+#button-container .btn:hover {
+  opacity: 0.7; /* Adds transparency on hover */
+}
+
+/* Background colours for specific buttons */
+#btn1 {
+  background-color: #6A91C8;
+}
+#btn2 {
+  background-color: #4C7BBD;
+}
+#btn3 {
+  background-color: #375E95;
+}
+#btn4 {
+  background-color: #4E4884;
+}
+#btn5 {
+  background-color: #5E579E;
+}
+#btn6 {
+  background-color: #746EAF;
+}
+
+/* Main container for the mid-section, with flexbox to centre content */
+#mid-section-container {
+  display: flex;
+  justify-content: center;
+  margin: 5rem;
+}
+
+/* Containers for the tags and output sections */
+#tag-container,
+#output-container {
+  width: 40%; /* Each takes 40% of the width */
+  padding: 3rem;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  text-align: center;
+  background-color: #4C7BBD;
+}
+
+/* Background colour for the output container */
+#output-container {
+  background-color: #4E4884;
+}
+
+/* General styling for text elements */
+.format {
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* Input field styling */
+input {
+  width: 420px;
+  padding: 1rem;
+  font-size: 1.3rem;
+  margin: 0.5rem auto;
+  border-radius: 5px;
+  border: none;
+}
+
+/* Label styling */
+label {
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  color: rgb(196, 236, 158);
+}
+
+/* Header (h2) styling */
+h2 {
+  color: rgb(236, 224, 53);
+  font-size: 2.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/* Styling for demo class, assuming it's a special case */
+.demo {
+  background-color: rgb(228, 70, 157);
+}

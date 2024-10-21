@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GET & SET</title>
+
+    <!-- Preloading Google fonts for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Linking Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Linking to external stylesheet -->
+    <link rel="stylesheet" href="css/getsetstyles.css" />
+  </head>
+
+  <body>
+    <!-- Main container for buttons -->
+    <div id="container">
+      <div id="button-container">
+        <!-- Buttons to set and get values -->
+        <div class="btn" id="btn1">Set Text Value</div>
+        <div class="btn" id="btn2">Set Html Value</div>
+        <div class="btn" id="btn3">Set Input Value</div>
+        <!-- Added button to reload the page -->
+        <div class="btn separator" id="reloadPage">Reload Page</div>
+        <div class="btn" id="btn4">Get Text Value</div>
+        <div class="btn" id="btn5">Get Html Value</div>
+        <div class="btn" id="btn6">Get Input Value</div>
+      </div>
+    </div>
+
+    <!-- Middle section to display input and output values -->
+    <div id="mid-section-container">
+      <div id="tag-container">
+        <!-- Section for setting values -->
+        <h2>SET VALUES</h2>
+        <p class="format text">Text Value Here</p> <!-- Placeholder text -->
+        <p class="format html">Html Value Here</p> <!-- Placeholder HTML content -->
+        <label for="username">Username</label>
+        <input type="text" id="username" /> <!-- Input field for username -->
+      </div>
+
+      <!-- Arrow image as a visual divider -->
+      <div><img src="images/arrow.png" alt="arrow" /></div>
+
+      <div id="output-container">
+        <!-- Section for displaying retrieved values -->
+        <h2>RETRIEVED VALUES</h2>
+        <p class="format output-text">Retrieved Text Values Here</p> <!-- Placeholder for retrieved text -->
+        <p class="format output-html">Retrieved Html Values Here</p> <!-- Placeholder for retrieved HTML content -->
+        <label for="username-output">Username Retrieved</label>
+        <input type="text" id="username-output" /> <!-- Corrected ID -->
+      </div>
+    </div>
+
+    <!-- Linking the external JavaScript file -->
+    <script src="js/get_vals_script.js"></script>
+  </body>
+</html>
